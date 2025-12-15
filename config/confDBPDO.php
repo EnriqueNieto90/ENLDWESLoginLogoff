@@ -1,7 +1,6 @@
-<?php
-
-/* 
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHP.php to edit this template
- */
+<?php 
+define('DSN', 'mysql:host=' . $_SERVER['SERVER_ADDR'] . '; dbname=DBENLDWESLoginLogoff');
+define('USERNAME','userENLDWESLoginLogoff');
+define('PASSWORD','paso');
+?>
 
