@@ -127,6 +127,24 @@
             <h1>Inicio público</h1>
             <h2><b>LOGIN LOGOFF</b></h2>
         </div>
+        <div class="header-controls">
+            <form action="" method="post" class="idioma-buttons">
+                <button type="submit" name="idioma" value="ES" id="ES">
+                    <img src="webroot/images/esp.png" alt="Español">
+                </button>
+                <button type="submit" name="idioma" value="EN" id="EN">
+                    <img src="webroot/images/uk.png" alt="English">
+                </button>
+                <button type="submit" name="idioma" value="FR" id="FR">
+                    <img src="webroot/images/francia.png" alt="Français">
+                </button>
+            </form>
+            <form action="" method="post">
+                <button name="iniciarSesion" class="login-btn">
+                    <span>Iniciar sesión</span>
+                </button>
+            </form>
+        </div>
     </header>
     
     <main>

@@ -16,6 +16,10 @@
         //Asignamos como página en activo el fichero inicioPublico
         $_SESSION['paginaEnCurso'] = 'inicioPublico';
     }
+    if(!isset($_SESSION['paginaEnCurso'])){
+        //Asignamos como página en activo el fichero inicioPublico
+        $_SESSION['paginaEnCurso'] = 'login';
+    }
     
     //Carga la página en curso
     require_once $controller[$_SESSION['paginaEnCurso']];
