@@ -5,10 +5,14 @@
     * Login del controlador del Proyecto Login logoff.
     * 
     */
-    if(!isset($_REQUEST['login'])){
-        $_SESSION['paginaEnCurso'] = 'login';
-        header('Location: indexLoginLogoff.php');
-        exit();
+    // volvemos al index principal al dar a cancelar
+    if (isset($_REQUEST['cancelar'])) {
+        $_SESSION['paginaEnCurso'] = 'inicioPublico';
+    }
+
+    // entramos al inicio privado al dar a entrar
+    if (isset($_REQUEST['entrar'])) {
+        $_SESSION['paginaEnCurso'] = 'inicioPrivado';
     }
     
     //Carga la página en curso

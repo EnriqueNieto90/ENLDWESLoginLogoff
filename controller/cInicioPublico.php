@@ -5,11 +5,6 @@
     * Inicio público del controlador del Proyecto Login logoff.
     * 
     */
-    if(!isset($_REQUEST['iniciarSesion'])){
-        $_SESSION['paginaEnCurso'] = 'login';
-        header('Location: indexLoginLogoff.php');
-        exit();
-    }
 
     //Carga la página en curso
     require_once $view['layout'];
