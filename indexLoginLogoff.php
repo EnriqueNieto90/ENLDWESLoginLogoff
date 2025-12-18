@@ -6,22 +6,25 @@
     */
     //Incluyo la configuración de la app y BD
     require_once 'config/confAPP.php';
-    require_once 'config/confDBPDO.php';
+    //require_once 'config/confDBPDO.php';
     
     //Recuperamos la sesión
     session_start();
     
-    //Comprobamos si hay una página activa
+    //Si no está la página en curso en la sesión le asignamos el fichero de inicio público
     if(!isset($_SESSION['paginaEnCurso'])){
-        //Asignamos como página en activo el fichero inicioPublico
         $_SESSION['paginaEnCurso'] = 'inicioPublico';
     }
-    if(!isset($_SESSION['paginaEnCurso'])){
-        //Asignamos como página en activo el fichero inicioPublico
+    
+    //Si está la sesión iniciada vamos al fichero login
+    if (isset($_REQUEST['iniciarSesion'])) {
+        $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
         $_SESSION['paginaEnCurso'] = 'login';
     }
     
-    //Carga la página en curso
+    
+    
+    //Cargamos el controlador de la página en curso
     require_once $controller[$_SESSION['paginaEnCurso']];
  
 ?>
