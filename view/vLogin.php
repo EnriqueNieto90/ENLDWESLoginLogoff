@@ -1,21 +1,52 @@
+<?php
 /**
-    * @author: Enrique Nieto Lorenzo
-    * @since: 16/12/2025
-    * Login del controlador del Proyecto Login logoff.
-    * 
-    */
-<h2>INICIO SESIÓN</h2>
-        <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post"> 
-            <input type="text" id="usuario" name="usuario" value="<?php echo $_REQUEST['usuario']??'' ?>" placeholder="Usuario">
-            <br>
-            <input type="password" id="contrasena" name="contrasena" value="<?php echo $_REQUEST['contrasena']??'' ?>" placeholder="Contraseña">
-            <br>   
-            <div class="form-actions">
-                <button name="entrar" id="entrar"><span>Entrar</span></button>
-                <button name="cancelar" id="cancelar"><span>Cancelar</span></button>
-            </div>
-            <hr>
-            <p>¿No tienes cuenta?</p>
-            <input type="button" value="Registrarse" name="registrarse" id="registrarse">
+ * @author: Enrique Nieto Lorenzo
+ * @since: 15/12/2025
+ * @description: Vista de Login.
+ */
+?>
+<header class="header-app">
+    <div class="logo-seccion">
+        <span class="titulo-tema">Login</span>
+        <span class="subtitulo-tema">LOGIN LOGOFF</span>
+    </div>
+    <div class="nav-derecha">
+        <form action="indexLoginLogoff.php" method="post">
+            <button type="submit" name="cancelar" class="btn-header">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i> Salir
+            </button>
         </form>
+    </div>
+</header>
+
+<main>
+    <div class="card-central">
+        <div class="logo-app-img">
+            <i class="fa-brands fa-microsoft" style="font-size: 2.5rem; color: #0078D4;"></i>
+        </div>
+
+        <h2 class="titulo-login">Iniciar sesión</h2>
+        <p style="margin-bottom: 20px; font-size: 0.9rem;">Utilice su cuenta corporativa para acceder.</p>
+        
+        <form action="indexLoginLogoff.php" method="post"> 
+            
+            <div class="grupo-input">
+                <input type="text" class="input-microsoft" name="usuario" value="<?php echo $_REQUEST['usuario']??'' ?>" placeholder="Usuario">
+                <?php if(!empty($aErrores['usuario'])){ echo "<span class='error-msg'>".$aErrores['usuario']."</span>"; } ?>
+            </div>
+            
+            <div class="grupo-input">
+                <input type="password" class="input-microsoft" name="contrasena" value="<?php echo $_REQUEST['contrasena']??'' ?>" placeholder="Contraseña">
+                <?php if(!empty($aErrores['contrasena'])){ echo "<span class='error-msg'>".$aErrores['contrasena']."</span>"; } ?>
+            </div>
+
+            <div class="acciones-login">
+                <span class="btn-link">¿No tienes cuenta? <br>
+                <button type="submit" name="registrarse" class="btn-link" style="font-weight:600;">Crea una aquí</button></span>
+                
+                <button type="submit" name="entrar" class="btn-primary">Entrar</button>
+            </div>
+        </form>
+    </div>
+</main>
 

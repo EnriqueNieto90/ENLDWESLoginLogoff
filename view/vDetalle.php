@@ -1,156 +1,74 @@
-<header>
-        <h1><b>Página de detalle</b></h1>
-        <form action="" method="post">
-            <button name="cerrarSesion" class="boton"><span>Cerrar sesión</span></button>
+<?php
+/**
+ * @author: Enrique Nieto Lorenzo
+ * @since: 15/12/2025
+ * @description: Vista de Detalle.
+ */
+?>
+<header class="header-app">
+    <div class="logo-seccion">
+        <span class="titulo-tema">Detalles</span>
+        <span class="subtitulo-tema">LOGIN LOGOFF</span>
+    </div>
+    <div class="nav-derecha">
+        <form action="indexLoginLogoff.php" method="post">
+            <button name="cerrarSesion" class="btn-header">Cerrar sesión</button>
         </form>
-    </header>
-    
-    <main>
-        <div class="form-actions">
-            <form action="" method="post">
-                <button name="volver" class="boton"><span>Volver</span></button>
-            </form>
+    </div>
+</header>
+
+<main>
+    <div style="width: 100%; max-width: 900px; margin-bottom: 20px;">
+        <form action="indexLoginLogoff.php" method="post">
+            <button name="volver" class="btn-link" style="color: #666;">
+                <i class="fa-solid fa-arrow-left"></i> Volver a Inicio
+            </button>
+        </form>
+    </div>
+
+    <div class="card-central card-dashboard" style="max-width: 1000px;">
+        
+        <h3 style="color:var(--ms-blue); margin-bottom:15px;">Variables de Sesión</h3>
+        <table class="tabla-microsoft">
+            <tr><th>Clave</th><th>Valor</th></tr>
+            <?php
+            if (!empty($_SESSION)) {
+                foreach ($_SESSION as $variable => $resultado) {
+                    echo "<tr><td>".$variable."</td><td><pre>" . print_r($resultado, true) . "</pre></td></tr>";
+                }
+            } else { echo "<tr><td colspan='2'>Vacía</td></tr>"; }
+            ?>
+        </table>
+
+        <h3 style="color:var(--ms-blue); margin: 30px 0 15px;">Cookies</h3>
+        <table class="tabla-microsoft">
+            <tr><th>Clave</th><th>Valor</th></tr>
+            <?php
+            if (!empty($_COOKIE)) {
+                foreach ($_COOKIE as $variable => $resultado) {
+                    echo "<tr><td>".$variable."</td><td><pre>" . $resultado . "</pre></td></tr>";
+                }
+            } else { echo "<tr><td colspan='2'>Vacía</td></tr>"; }
+            ?>
+        </table>
+
+        <h3 style="color:var(--ms-blue); margin: 30px 0 15px;">Server</h3>
+        <div style="height: 300px; overflow-y: scroll; border:1px solid #eee;">
+            <table class="tabla-microsoft">
+                <tr><th>Clave</th><th>Valor</th></tr>
+                <?php
+                foreach ($_SERVER as $variable => $resultado) {
+                    echo "<tr><td>".$variable."</td><td><pre>" . print_r($resultado, true) . "</pre></td></tr>";
+                }
+                ?>
+            </table>
         </div>
         
-        <?php
-        /**
-        * @author: Enrique Nieto Lorenzo
-        * @since: 20/11/2025
-        * 0. Mostrar el contenido de las variables superglobales y phpinfo().
-        */
-        
-        //Contenido de la variable $_SESSION-------------------------------------------------------
-        echo '<h3>Contenido de la variable $_SESSION</h3>';
-        echo '<table>';
-        echo '<tr><th>Variable</th><th>Valor</th></tr>';
-        if (!empty($_SESSION)) {
-            foreach ($_SESSION as $variable => $resultado) {
-                echo "<tr>";
-                echo '<td>$_SESSION[' . $variable . ']</td>';
-                echo "<td><pre>" . print_r($resultado, true) . "</pre></td>";
-                echo "</tr>";
-            }
-        } else {
-            echo "<tr><td colspan='2'><em>La variable \$_SESSION está vacía.</em></td></tr>";
-        }
-        echo "</table>";
+        <h3 style="color:var(--ms-blue); margin: 30px 0 15px;">PHP Info</h3>
+        <div style="overflow-x: auto; padding: 10px; border: 1px solid #ddd;">
+            <?php phpinfo(); ?>
+        </div>
 
-        //Contenido de la variable $_COOKIE---------------------------------------------------
-        echo '<h3>Contenido de la variable $_COOKIE</h3>';
-        echo '<table>';
-        echo '<tr><th>Variable</th><th>Valor</th></tr>';
-        if (!empty($_COOKIE)) {
-            foreach ($_COOKIE as $variable => $resultado) {
-                echo "<tr>";
-                echo '<td>$_COOKIE[' . $variable . ']</td>';
-                echo "<td><pre>" . $resultado . "</pre></td>";
-                echo "</tr>";
-            }
-        } else {
-            echo "<tr><td colspan='2'><em>La variable \$_COOKIE está vacía.</em></td></tr>";
-        }
-        echo "</table>";
-
-        //Contenido de la variable $_SERVER-----------------------------------------------
-        echo '<h3>Contenido de la variable $_SERVER</h3>';
-        echo '<table>';
-        echo '<tr><th>Variable</th><th>Valor</th></tr>';
-        if (!empty($_SERVER)) {
-            foreach ($_SERVER as $variable => $resultado) {
-                echo "<tr>";
-                echo '<td>$_SERVER[' . $variable . ']</td>';
-                echo "<td><pre>" . print_r($resultado, true) . "</pre></td>";
-                echo "</tr>";
-            }
-        } else {
-            echo "<tr><td colspan='2'><em>La variable \$_SERVER está vacía.</em></td></tr>";
-        }
-        echo "</table>";
-
-        //Contenido de la variable $_ENV -----------------------------------------------
-        echo '<h3>Contenido de la variable $_ENV</h3>';
-        echo '<table>';
-        echo '<tr><th>Variable</th><th>Valor</th></tr>';
-        if (!empty($_ENV)) {
-            foreach ($_ENV as $variable => $resultado) {
-                echo "<tr>";
-                echo '<td>$_ENV[' . $variable . ']</td>';
-                echo "<td><pre>" . print_r($resultado, true) . "</pre></td>";
-                echo "</tr>";
-            }
-        } else {
-            echo "<tr><td colspan='2'><em>La variable \$_ENV está vacía.</em></td></tr>";
-        }
-        echo "</table>";
-
-        //Contenido de la variable $_REQUEST -----------------------------------------------
-        echo '<h3>Contenido de la variable $_REQUEST</h3>';
-        echo '<table>';
-        echo '<tr><th>Variable</th><th>Valor</th></tr>';
-        if (!empty($_REQUEST)) {
-            foreach ($_REQUEST as $variable => $resultado) {
-                echo "<tr>";
-                echo '<td>$_REQUEST[' . $variable . ']</td>';
-                echo "<td><pre>" . print_r($resultado, true) . "</pre></td>";
-                echo "</tr>";
-            }
-        } else {
-            echo "<tr><td colspan='2'><em>La variable \$_REQUEST está vacía.</em></td></tr>";
-        }
-        echo "</table>";
-
-        //Contenido de la variable $_GET -----------------------------------------------
-        echo '<h3>Contenido de la variable $_GET</h3>';
-        echo '<table>';
-        echo '<tr><th>Variable</th><th>Valor</th></tr>';
-        if (!empty($_GET)) {
-            foreach ($_GET as $variable => $resultado) {
-                echo "<tr>";
-                echo '<td>$_GET[' . $variable . ']</td>';
-                echo "<td><pre>" . print_r($resultado, true) . "</pre></td>";
-                echo "</tr>";
-            }
-        } else {
-            echo "<tr><td colspan='2'><em>La variable \$_GET está vacía.</em></td></tr>";
-        }
-        echo "</table>";
-
-        //Contenido de la variable $_POST -----------------------------------------------
-        echo '<h3>Contenido de la variable $_POST</h3>';
-        echo '<table>';
-        echo '<tr><th>Variable</th><th>Valor</th></tr>';
-        if (!empty($_POST)) {
-            foreach ($_POST as $variable => $resultado) {
-                echo "<tr>";
-                echo '<td>$_POST[' . $variable . ']</td>';
-                echo "<td><pre>" . print_r($resultado, true) . "</pre></td>";
-                echo "</tr>";
-            }
-        } else {
-            echo "<tr><td colspan='2'><em>La variable \$_POST está vacía.</em></td></tr>";
-        }
-        echo "</table>";
-
-        //Contenido de la variable $_FILES -----------------------------------------------
-        echo '<h3>Contenido de la variable $_FILES</h3>';
-        echo '<table>';
-        echo '<tr><th>Variable</th><th>Valor</th></tr>';
-        if (!empty($_FILES)) {
-            foreach ($_FILES as $variable => $resultado) {
-                echo "<tr>";
-                echo '<td>$_FILES[' . $variable . ']</td>';
-                echo "<td><pre>" . print_r($resultado, true) . "</pre></td>";
-                echo "</tr>";
-            }
-        } else {
-            echo "<tr><td colspan='2'><em>La variable \$_FILES está vacía.</em></td></tr>";
-        }
-        echo "</table>";
-
-        // phpinfo()
-        echo '<div id="phpinfo">';
-        phpinfo();
-        echo '</div>';
-        ?>
-    </main>
+    </div>
+</main>
 
