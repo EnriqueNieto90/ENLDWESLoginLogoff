@@ -18,17 +18,17 @@
 </header>
 
 <main>
-    <div style="width: 100%; max-width: 900px; margin-bottom: 20px;">
+    <div class="contenedor-volver">
         <form action="indexLoginLogoff.php" method="post">
-            <button name="volver" class="btn-link" style="color: #666;">
+            <button name="volver" class="btn-link btn-volver-color">
                 <i class="fa-solid fa-arrow-left"></i> Volver a Inicio
             </button>
         </form>
     </div>
 
-    <div class="card-central card-dashboard" style="max-width: 1000px;">
+    <div class="card-central card-dashboard card-wide">
         
-        <h3 style="color:var(--ms-blue); margin-bottom:15px;">Variables de Sesión</h3>
+        <h3 class="titulo-tabla titulo-tabla-first">Variables de Sesión</h3>
         <table class="tabla-microsoft">
             <tr><th>Clave</th><th>Valor</th></tr>
             <?php
@@ -40,7 +40,7 @@
             ?>
         </table>
 
-        <h3 style="color:var(--ms-blue); margin: 30px 0 15px;">Cookies</h3>
+        <h3 class="titulo-tabla">Cookies</h3>
         <table class="tabla-microsoft">
             <tr><th>Clave</th><th>Valor</th></tr>
             <?php
@@ -52,8 +52,8 @@
             ?>
         </table>
 
-        <h3 style="color:var(--ms-blue); margin: 30px 0 15px;">Server</h3>
-        <div style="height: 300px; overflow-y: scroll; border:1px solid #eee;">
+        <h3 class="titulo-tabla">Server</h3>
+        <div class="scroll-container">
             <table class="tabla-microsoft">
                 <tr><th>Clave</th><th>Valor</th></tr>
                 <?php
@@ -64,11 +64,10 @@
             </table>
         </div>
         
-        <h3 style="color:var(--ms-blue); margin: 30px 0 15px;">PHP Info</h3>
-        <div style="overflow-x: auto; padding: 10px; border: 1px solid #ddd;">
+        <h3 class="titulo-tabla">PHP Info</h3>
+        <div class="phpinfo-container">
             <?php phpinfo(); ?>
         </div>
 
     </div>
 </main>
-
