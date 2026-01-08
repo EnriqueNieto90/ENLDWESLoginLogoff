@@ -168,15 +168,27 @@ main {
     margin-top: 30px;
 }
 
-.btn-link {
+span.btn-link {
+    color: #666; 
+    cursor: default;
+    font-size: 0.9rem;
+    text-decoration: none;
+}
+
+button.btn-link {
     background: none;
     border: none;
-    color: var(--ms-blue);
+    color: var(--ms-blue-hover); 
+    font-weight: 700; 
     cursor: pointer;
     font-size: 0.9rem;
     padding: 0;
 }
-.btn-link:hover { text-decoration: underline; }
+
+button.btn-link:hover {
+    text-decoration: underline;
+    color: #004d8a;
+}
 .btn-bold { font-weight: 600; }
 
 .btn-primary {
@@ -207,7 +219,9 @@ main {
 
 
 .card-wide {
-    max-width: 1000px;
+    max-width: 60vw; /* Ocupa el 95% del ancho de la ventana */
+    width: 100%;     /* Asegura que intente llenar ese espacio */
+    padding: 30px;   /* Un poco de aire interior */
 }
 
 .welcome-msg {
@@ -263,13 +277,6 @@ main {
     margin: 30px 0 15px;
 }
 .titulo-tabla-first { margin-bottom: 15px; } 
-
-/* Contenedores con scroll */
-.scroll-container {
-    height: 300px;
-    overflow-y: scroll;
-    border: 1px solid #eee;
-}
 
 .phpinfo-container {
     overflow-x: auto;
