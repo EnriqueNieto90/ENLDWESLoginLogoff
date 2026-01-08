@@ -26,7 +26,7 @@
         </div>
 
         <h2 class="titulo-login">Iniciar sesión</h2>
-        <p style="margin-bottom: 20px; font-size: 0.9rem;">Utilice su cuenta corporativa para acceder.</p>
+        <p class="subtitulo-login">Utilice su cuenta corporativa para acceder.</p>
         
         <form action="indexLoginLogoff.php" method="post"> 
             
@@ -42,11 +42,10 @@
 
             <div class="acciones-login">
                 <span class="btn-link">¿No tienes cuenta? <br>
-                <button type="submit" name="registrarse" class="btn-link" style="font-weight:600;">Crea una aquí</button></span>
+                <button type="submit" name="registrarse" class="btn-link btn-bold">Crea una aquí</button></span>
                 
                 <button type="submit" name="entrar" class="btn-primary">Entrar</button>
             </div>
         </form>
     </div>
 </main>
-
