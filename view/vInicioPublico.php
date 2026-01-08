@@ -26,7 +26,7 @@
             </button>
         </form>
 
-        <form action="indexLoginLogoff.php" method="post" style="margin:0;">
+        <form action="indexLoginLogoff.php" method="post" class="form-no-margin">
             <button name="iniciarSesion" class="btn-login-header">
                 Iniciar Sesión
             </button>
@@ -35,8 +35,8 @@
 </header>
 
 <main>
-    <div class="card-central card-dashboard" style="text-align: center;">
-        <h2 class="titulo-login" style="text-align: center;">Bienvenido a la aplicación Login Logoff</h2>
+    <div class="card-central card-dashboard card-center-text">
+        <h2 class="titulo-login text-center">Bienvenido a la aplicación Login Logoff</h2>
         <p>Sistema de gestión de usuarios con autenticación y control de sesiones.</p>
         
         <div class="home-image-container">
