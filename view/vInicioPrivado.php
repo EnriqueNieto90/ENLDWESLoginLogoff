@@ -22,23 +22,22 @@
         
         <div class="welcome-msg">
             <?php
-                // We assume the user object is stored in session from the Login Controller
+                // Asumimos que el objeto usuario está almacenado en la sesión desde el controlador
                 $aUsuarioEnCurso = $_SESSION['usuarioDAW205AppLoginLogoffTema5'];
                 
-                // Get previous connection date
                 $fechaUltimaConexionAnterior = new DateTime($aUsuarioEnCurso->getFechaHoraUltimaConexionAnterior());
                 $idioma = $_COOKIE["idioma"] ?? "ES";
 
                 if ($idioma == "ES") {
                     setlocale(LC_TIME, 'es_ES.utf8');
                     echo '<h2>Bienvenido <strong>'.$aUsuarioEnCurso->getDescUsuario().'</strong></h2>';
-                    echo '<p style="margin-top:10px;">Esta es la <strong>'.$aUsuarioEnCurso->getNumConexiones().'ª</strong> vez que se conecta.</p>';
+                    echo '<p>Esta es la <strong>'.$aUsuarioEnCurso->getNumConexiones().'ª</strong> vez que se conecta.</p>';
                 } elseif ($idioma == "EN") {
                     echo '<h2>Welcome <strong>'.$aUsuarioEnCurso->getDescUsuario().'</strong></h2>';
-                    echo '<p style="margin-top:10px;">This is the <strong>'.$aUsuarioEnCurso->getNumConexiones().'</strong> time you have connected.</p>';
+                    echo '<p>This is the <strong>'.$aUsuarioEnCurso->getNumConexiones().'</strong> time you have connected.</p>';
                 } else {
                      echo '<h2>Bienvenue <strong>'.$aUsuarioEnCurso->getDescUsuario().'</strong></h2>';
-                     echo '<p style="margin-top:10px;">C\'est la <strong>'.$aUsuarioEnCurso->getNumConexiones().'e</strong> fois que vous vous connectez.</p>';
+                     echo '<p>C\'est la <strong>'.$aUsuarioEnCurso->getNumConexiones().'e</strong> fois que vous vous connectez.</p>';
                 }
             ?>
         </div>
@@ -50,9 +49,9 @@
             </div>
         <?php } ?>
     
-        <div style="text-align: center; margin-top: 40px;">
+        <div class="contenedor-boton-centro">
             <form action="indexLoginLogoff.php" method="post">
-                <button name="detalle" class="btn-primary" style="width: auto; padding: 10px 40px;">
+                <button name="detalle" class="btn-primary btn-detalle">
                     Ver Detalle <i class="fa-solid fa-arrow-right"></i>
                 </button>
             </form>
@@ -60,4 +59,3 @@
         
     </div>
 </main>
-
