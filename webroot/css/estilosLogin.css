@@ -217,11 +217,10 @@ button.btn-link:hover {
     border-top: 4px solid var(--ms-blue);
 }
 
-
 .card-wide {
-    max-width: 60vw; /* Ocupa el 95% del ancho de la ventana */
-    width: 100%;     /* Asegura que intente llenar ese espacio */
-    padding: 30px;   /* Un poco de aire interior */
+    max-width: 60vw;
+    width: 100%;     
+    padding: 30px;   
 }
 
 .welcome-msg {
@@ -244,7 +243,6 @@ button.btn-link:hover {
     margin-top: 40px;
 }
 
-/* Contenedor botón volver */
 .contenedor-volver {
     width: 100%;
     max-width: 900px;

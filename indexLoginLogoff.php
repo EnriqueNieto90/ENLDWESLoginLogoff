@@ -20,11 +20,6 @@ if (!isset($_SESSION['paginaEnCurso'])) {
 }
 
 // CARGAR EL CONTROLADOR CORRESPONDIENTE
-// Añadimos una comprobación de seguridad por si la página no existe
-if (isset($controller[$_SESSION['paginaEnCurso']])) {
-    require_once $controller[$_SESSION['paginaEnCurso']];
-} else {
-    // Si hay algún error en la sesión, mandamos al inicio por seguridad
-    require_once $controller['inicioPublico'];
-}
+require_once $controller[$_SESSION['paginaEnCurso']];
+
 ?>
