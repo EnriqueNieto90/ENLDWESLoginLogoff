@@ -11,8 +11,8 @@ require_once 'core/231018libreriaValidacion.php';
 $controller = [
     'inicioPublico' => 'controller/cInicioPublico.php',
     'login'         => 'controller/cLogin.php',
-    'inicioPrivado' => 'controller/cInicioPrivado.php', // Añadido para luego
-    'detalle'       => 'controller/cDetalle.php'        // Añadido para luego
+    'inicioPrivado' => 'controller/cInicioPrivado.php',
+    'detalle'       => 'controller/cDetalle.php'       
 ];
 
 // Array de vistas
