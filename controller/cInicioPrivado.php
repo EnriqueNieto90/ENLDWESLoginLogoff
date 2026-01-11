@@ -23,10 +23,20 @@ if (isset($_REQUEST['cerrarSesion'])) {
 
 //BOTÓN DETALLE
 if (isset($_REQUEST['detalle'])) {
+    $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
     $_SESSION['paginaEnCurso'] = 'detalle';
     header('Location: indexLoginLogoff.php');
     exit;
 }
+
+// PREPARAR DATOS PARA LA VISTA
+$oUsuario = $_SESSION['usuarioENLLoginLogoff'];
+
+$avInicioPrivado = [
+    'descUsuario'                     => $oUsuario->getDescUsuario(),
+    'numAccesos'                      => $oUsuario->getNumAccesos(),
+    'fechaHoraUltimaConexionAnterior' => $oUsuario->getFechaHoraUltimaConexionAnterior(),
+];
 
 //CARGAR VISTA
 require_once $view['layout'];

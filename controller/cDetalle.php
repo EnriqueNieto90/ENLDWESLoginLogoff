@@ -6,7 +6,7 @@
  */
 
 //Si no hay usuario logueado, mandar al login
-if (!isset($_SESSION['usuarioDAW205AppLoginLogoffTema5'])) {
+if (!isset($_SESSION['usuarioENLLoginLogoff'])) {
     $_SESSION['paginaEnCurso'] = 'login';
     header('Location: indexLoginLogoff.php');
     exit;

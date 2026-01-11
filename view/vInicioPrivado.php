@@ -16,38 +16,34 @@
         </form>
     </div>
 </header>
-
 <main>
     <div class="card-central card-dashboard">
         
         <div class="welcome-msg">
             <?php
-                // Asumimos que el objeto usuario está almacenado en la sesión desde el controlador
-                $aUsuarioEnCurso = $_SESSION['usuarioDAW205AppLoginLogoffTema5'];
-                
-                $fechaUltimaConexionAnterior = new DateTime($aUsuarioEnCurso->getFechaHoraUltimaConexionAnterior());
+                // Obtener idioma de la cookie
                 $idioma = $_COOKIE["idioma"] ?? "ES";
-
+                
+                // Usar SOLO el array preparado por el controlador (MVC correcto)
                 if ($idioma == "ES") {
-                    setlocale(LC_TIME, 'es_ES.utf8');
-                    echo '<h2>Bienvenido <strong>'.$aUsuarioEnCurso->getDescUsuario().'</strong></h2>';
-                    echo '<p>Esta es la <strong>'.$aUsuarioEnCurso->getNumConexiones().'ª</strong> vez que se conecta.</p>';
+                    echo '<h2>Bienvenido <strong>' . $avInicioPrivado['descUsuario'] . '</strong></h2>';
+                    echo '<p>Esta es la <strong>' . $avInicioPrivado['numAccesos'] . 'ª</strong> vez que se conecta.</p>';
                 } elseif ($idioma == "EN") {
-                    echo '<h2>Welcome <strong>'.$aUsuarioEnCurso->getDescUsuario().'</strong></h2>';
-                    echo '<p>This is the <strong>'.$aUsuarioEnCurso->getNumConexiones().'</strong> time you have connected.</p>';
+                    echo '<h2>Welcome <strong>' . $avInicioPrivado['descUsuario'] . '</strong></h2>';
+                    echo '<p>This is the <strong>' . $avInicioPrivado['numAccesos'] . '</strong> time you have connected.</p>';
                 } else {
-                     echo '<h2>Bienvenue <strong>'.$aUsuarioEnCurso->getDescUsuario().'</strong></h2>';
-                     echo '<p>C\'est la <strong>'.$aUsuarioEnCurso->getNumConexiones().'e</strong> fois que vous vous connectez.</p>';
+                    echo '<h2>Bienvenue <strong>' . $avInicioPrivado['descUsuario'] . '</strong></h2>';
+                    echo '<p>C\'est la <strong>' . $avInicioPrivado['numAccesos'] . 'e</strong> fois que vous vous connectez.</p>';
                 }
             ?>
         </div>
-
-        <?php if (($aUsuarioEnCurso->getNumConexiones()) > 1) { ?>
+        
+        <?php if ($avInicioPrivado['numAccesos'] > 1 && $avInicioPrivado['fechaHoraUltimaConexionAnterior'] !== null): ?>
             <div class="info-conexion">
                 <i class="fa-regular fa-clock"></i> Última conexión: 
-                <strong><?php echo $fechaUltimaConexionAnterior->format('d/m/Y H:i:s'); ?></strong>
+                <strong><?php echo $avInicioPrivado['fechaHoraUltimaConexionAnterior']->format('d/m/Y H:i:s'); ?></strong>
             </div>
-        <?php } ?>
+        <?php endif; ?>
     
         <div class="contenedor-boton-centro">
             <form action="indexLoginLogoff.php" method="post">
