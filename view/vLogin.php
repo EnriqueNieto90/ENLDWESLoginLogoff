@@ -31,13 +31,11 @@
         <form action="indexLoginLogoff.php" method="post"> 
             
             <div class="grupo-input">
-                <input type="text" class="input-microsoft" name="usuario" value="<?php echo $_REQUEST['usuario']??'' ?>" placeholder="Usuario">
-                <?php if(!empty($aErrores['usuario'])){ echo "<span class='error-msg'>".$aErrores['usuario']."</span>"; } ?>
+                <input type="text" class="input-microsoft" name="usuario" value="<?php echo $_REQUEST['usuario']??''; ?>" placeholder="Usuario">
             </div>
             
             <div class="grupo-input">
-                <input type="password" class="input-microsoft" name="contrasena" value="<?php echo $_REQUEST['contrasena']??'' ?>" placeholder="Contraseña">
-                <?php if(!empty($aErrores['contrasena'])){ echo "<span class='error-msg'>".$aErrores['contrasena']."</span>"; } ?>
+                <input type="password" class="input-microsoft" name="password" value="<?php echo $_REQUEST['password']??''; ?>" placeholder="Contraseña">
             </div>
 
             <div class="acciones-login">

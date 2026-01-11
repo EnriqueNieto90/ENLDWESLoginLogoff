@@ -1,7 +1,7 @@
 <?php
 /**
  * @author: Enrique Nieto Lorenzo
- * @since: 15/12/2025
+ * @since: 11/01/2026
  * @description: Controlador del Login. Gestiona la autenticación.
  */
 
@@ -14,17 +14,18 @@ if (isset($_REQUEST['cancelar'])) {
 
 //PROCESO DE LOGIN
 $entradaOK = true;
-$aErrores = ['usuario' => null, 'contrasena' => null];
+$aErrores = ['usuario' => null, 'password' => null];
 
 if (isset($_REQUEST['entrar'])) {
+    // Validar el formato de campos
     $aErrores['usuario'] = validacionFormularios::comprobarAlfabetico($_REQUEST['usuario'], 50, 1, 1);
-    $aErrores['contrasena'] = validacionFormularios::validarPassword($_REQUEST['contrasena'], 20, 4, 1, 1);
+    $aErrores['password'] = validacionFormularios::validarPassword($_REQUEST['password'], 20, 4, 1, 1);
 
     // Comprobar si hay errores
     foreach ($aErrores as $campo => $error) {
         if ($error != null) {
             $entradaOK = false;
-            $_REQUEST['contrasena'] = ''; // Limpiar contraseña por seguridad
+            $_REQUEST['password'] = ''; // Limpiar contraseña por seguridad
         }
     }
 } else {
@@ -36,18 +37,18 @@ if ($entradaOK) {
     require_once 'model/UsuarioPDO.php';
     
     // El modelo valida y devuelve el objeto Usuario si es correcto
-    $oUsuarioValido = UsuarioPDO::validarUsuario($_REQUEST['usuario'], $_REQUEST['contrasena']);
+    $oUsuarioValido = UsuarioPDO::validarUsuario($_REQUEST['usuario'], $_REQUEST['password']);
 
-    if ($oUsuarioValido) {
-        // LOGIN CORRECTO: Guardamos usuario en sesión y redirigimos
-        $_SESSION['usuarioDAW205AppLoginLogoffTema5'] = $oUsuarioValido;
+    if ($oUsuarioValido !== null) {
+        // LOGIN CORRECTO. Guardamos usuario en sesión y redirigimos
+        $_SESSION['usuarioENLLoginLogoff'] = $oUsuarioValido;
         $_SESSION['paginaEnCurso'] = 'inicioPrivado';
         
         header('Location: indexLoginLogoff.php');
         exit;
     } else {
         // LOGIN INCORRECTO
-        $aErrores['usuario'] = "Usuario o contraseña incorrectos";
+        $entradaOK = false;
     }
 }
 
