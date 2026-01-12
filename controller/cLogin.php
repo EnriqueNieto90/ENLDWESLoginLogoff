@@ -28,27 +28,26 @@ if (isset($_REQUEST['entrar'])) {
             $_REQUEST['password'] = ''; // Limpiar contraseña por seguridad
         }
     }
+    //SI LOS DATOS SON VÁLIDOS CONSULTAR BBDD
+    if ($entradaOK) {
+        $oUsuarioValido = UsuarioPDO::validarUsuario($_REQUEST['usuario'], $_REQUEST['password']);
+
+        // Si no se encuentra en la BBDD entradaOK es false
+        if (!isset($oUsuarioValido)) {
+            $entradaOK = false;
+        }
+    }
 } else {
     $entradaOK = false; 
 }
 
-//SI LOS DATOS SON VÁLIDOS CONSULTAR BBDD
+// LOGIN CORRECTO. Guardamos usuario en sesión y redirigimos
 if ($entradaOK) {
-    
-    // El modelo valida y devuelve el objeto Usuario si es correcto
-    $oUsuarioValido = UsuarioPDO::validarUsuario($_REQUEST['usuario'], $_REQUEST['password']);
-
-    if ($oUsuarioValido !== null) {
-        // LOGIN CORRECTO. Guardamos usuario en sesión y redirigimos
-        $_SESSION['usuarioENLLoginLogoff'] = $oUsuarioValido;
-        $_SESSION['paginaEnCurso'] = 'inicioPrivado';
+    $_SESSION['usuarioENLLoginLogoff'] = $oUsuarioValido;
+    $_SESSION['paginaEnCurso'] = 'inicioPrivado';
         
-        header('Location: indexLoginLogoff.php');
-        exit;
-    } else {
-        // LOGIN INCORRECTO
-        $entradaOK = false;
-    }
+    header('Location: indexLoginLogoff.php');
+    exit;
 }
 
 //CARGAR LA VISTA
