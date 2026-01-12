@@ -11,18 +11,18 @@ class Usuario {
     private $codUsuario;
     private $password;
     private $descUsuario;
-    private $numAccesos;
+    private $numConexiones;
     private $fechaHoraUltimaConexion;
     private $fechaHoraUltimaConexionAnterior;
     private $perfil;
     private $imagenUsuario;
     
     //CONSTRUCTOR
-    public function __construct($codUsuario, $password, $descUsuario, $numAccesos, $fechaHoraUltimaConexion, $fechaHoraUltimaConexionAnterior, $perfil, $imagenUsuario = null) {
+    public function __construct($codUsuario, $password, $descUsuario, $numConexiones, $fechaHoraUltimaConexion, $fechaHoraUltimaConexionAnterior, $perfil, $imagenUsuario = null) {
         $this->codUsuario = $codUsuario;
         $this->password = $password;
         $this->descUsuario = $descUsuario;
-        $this->numAccesos = $numAccesos;
+        $this->numConexiones = $numConexiones;
         $this->fechaHoraUltimaConexion = $fechaHoraUltimaConexion;
         $this->fechaHoraUltimaConexionAnterior = $fechaHoraUltimaConexionAnterior;
         $this->perfil = $perfil;
@@ -42,8 +42,8 @@ class Usuario {
         return $this->descUsuario;
     }
 
-    public function getNumAccesos() {
-        return $this->numAccesos;
+    public function getNumConexiones() {
+        return $this->numConexiones;
     }
 
     public function getFechaHoraUltimaConexion() {
@@ -71,8 +71,8 @@ class Usuario {
         $this->descUsuario = $descUsuario;
     }
 
-    public function setNumAccesos($numAccesos) {
-        $this->numAccesos = $numAccesos;
+    public function setNumConexiones($numConexiones) {
+        $this->numConexiones = $numConexiones;
     }
 
     public function setFechaHoraUltimaConexion($fechaHoraUltimaConexion) {

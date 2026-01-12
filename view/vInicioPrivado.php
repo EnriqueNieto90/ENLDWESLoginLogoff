@@ -26,18 +26,18 @@
                 
                 if ($idioma == "ES") {
                     echo '<h2>Bienvenido <strong>' . $avInicioPrivado['descUsuario'] . '</strong></h2>';
-                    echo '<p>Esta es la <strong>' . $avInicioPrivado['numAccesos'] . 'ª</strong> vez que se conecta.</p>';
+                    echo '<p>Esta es la <strong>' . $avInicioPrivado['numConexiones'] . 'ª</strong> vez que se conecta.</p>';
                 } elseif ($idioma == "EN") {
                     echo '<h2>Welcome <strong>' . $avInicioPrivado['descUsuario'] . '</strong></h2>';
-                    echo '<p>This is the <strong>' . $avInicioPrivado['numAccesos'] . '</strong> time you have connected.</p>';
+                    echo '<p>This is the <strong>' . $avInicioPrivado['numConexiones'] . '</strong> time you have connected.</p>';
                 } else {
                     echo '<h2>Bienvenue <strong>' . $avInicioPrivado['descUsuario'] . '</strong></h2>';
-                    echo '<p>C\'est la <strong>' . $avInicioPrivado['numAccesos'] . 'e</strong> fois que vous vous connectez.</p>';
+                    echo '<p>C\'est la <strong>' . $avInicioPrivado['numConexiones'] . 'e</strong> fois que vous vous connectez.</p>';
                 }
             ?>
         </div>
         
-        <?php if ($avInicioPrivado['numAccesos'] > 1 && $avInicioPrivado['fechaHoraUltimaConexionAnterior'] !== null): ?>
+        <?php if ($avInicioPrivado['numConexiones'] > 1 && $avInicioPrivado['fechaHoraUltimaConexionAnterior'] !== null): ?>
             <div class="info-conexion">
                 <i class="fa-regular fa-clock"></i> Última conexión: 
                 <strong><?php echo $avInicioPrivado['fechaHoraUltimaConexionAnterior']->format('d/m/Y H:i:s'); ?></strong>

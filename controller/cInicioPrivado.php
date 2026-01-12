@@ -34,7 +34,7 @@ $oUsuario = $_SESSION['usuarioENLLoginLogoff'];
 
 $avInicioPrivado = [
     'descUsuario'                     => $oUsuario->getDescUsuario(),
-    'numAccesos'                      => $oUsuario->getNumAccesos(),
+    'numConexiones'                      => $oUsuario->getNumConexiones(),
     'fechaHoraUltimaConexionAnterior' => $oUsuario->getFechaHoraUltimaConexionAnterior(),
 ];
 
