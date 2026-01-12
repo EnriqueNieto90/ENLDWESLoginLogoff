@@ -34,7 +34,6 @@ if (isset($_REQUEST['entrar'])) {
 
 //SI LOS DATOS SON VÁLIDOS CONSULTAR BBDD
 if ($entradaOK) {
-    require_once 'model/UsuarioPDO.php';
     
     // El modelo valida y devuelve el objeto Usuario si es correcto
     $oUsuarioValido = UsuarioPDO::validarUsuario($_REQUEST['usuario'], $_REQUEST['password']);
