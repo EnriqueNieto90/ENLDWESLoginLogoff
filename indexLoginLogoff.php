@@ -2,12 +2,12 @@
 /**
  * @author Enrique Nieto Lorenzo
  * @since 15/12/2025
- * @description Punto de entrada de la aplicación (Front Controller).
+ * @description Punto de entrada de la aplicación.
  */
 
 // CARGA DE CONFIGURACIONES
 require_once 'config/confAPP.php';
-require_once 'config/EDconfDBPDO.php';
+require_once 'config/confDBPDO.php';
 
 // CARGA DEL MODELO
 require_once 'model/Usuario.php';
