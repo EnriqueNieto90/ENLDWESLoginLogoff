@@ -24,7 +24,6 @@
                 // Obtener idioma de la cookie
                 $idioma = $_COOKIE["idioma"] ?? "ES";
                 
-                // Usar SOLO el array preparado por el controlador (MVC correcto)
                 if ($idioma == "ES") {
                     echo '<h2>Bienvenido <strong>' . $avInicioPrivado['descUsuario'] . '</strong></h2>';
                     echo '<p>Esta es la <strong>' . $avInicioPrivado['numAccesos'] . 'ª</strong> vez que se conecta.</p>';
