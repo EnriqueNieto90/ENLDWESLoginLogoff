@@ -8,6 +8,10 @@
 // CARGA DE LIBRERÍA DE VALIDACIÓN
 require_once 'core/231018libreriaValidacion.php';
 
+// CARGA DEL MODELO
+require_once 'model/Usuario.php';
+require_once 'model/UsuarioPDO.php';
+
 // ARRAY DE CONTROLADORES
 $controller = [
     'inicioPublico' => 'controller/cInicioPublico.php',

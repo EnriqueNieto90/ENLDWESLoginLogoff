@@ -7,10 +7,7 @@
 
 // CARGA DE CONFIGURACIONES
 require_once 'config/confAPP.php';
-require_once 'config/confDBPDO.php';
-
-// CARGA DEL MODELO
-require_once 'model/Usuario.php';
+require_once 'config/EDconfDBPDO.php';
 
 // INICIAR O RECUPERAR SESIÓN
 session_start();
